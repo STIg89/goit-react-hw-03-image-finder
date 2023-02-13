@@ -34,12 +34,12 @@ export class ImageFinder extends Component {
           status: 'rejected',
         });
       }
-    }
-    if (totalPages === page) {
-      Notify.info(`We're sorry, but you've reached the end of search`);
-      this.setState({
-        status: 'idle',
-      });
+      if (totalPages === page) {
+        Notify.info(`We're sorry, but you've reached the end of search`);
+        this.setState({
+          status: 'idle',
+        });
+      }
     }
   }
 
