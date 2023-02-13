@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Backdrop, ModalWrap } from './Modal.styled';
+import PropTypes from 'prop-types';
 
 export class Modal extends Component {
   componentDidMount() {
@@ -22,3 +23,9 @@ export class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  image: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+  tags: PropTypes.string.isRequired,
+};

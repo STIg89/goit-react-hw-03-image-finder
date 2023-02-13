@@ -63,9 +63,9 @@ export class ImageFinder extends Component {
     return (
       <Wrapper>
         <SearchBar onSubmitForm={this.onSearchClick} />
-        {status === 'pending' && <Loader />}
         <ImageGallery images={images} />
         {status === 'resolved' && <Button onClick={this.onLoadMoreClick} />}
+        {status === 'pending' && <Loader />}
       </Wrapper>
     );
   }
