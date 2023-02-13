@@ -13,15 +13,6 @@ export class ImageGalleryItem extends Component {
     this.setState({ isVisible: !isVisible });
   };
 
-  onCloseModal = e => {
-    const clickedTo = e.target.id;
-    const pressedKey = e.code;
-
-    if (clickedTo === 'backdrop' || pressedKey === 'Escape') {
-      this.onToggleModal();
-    }
-  };
-
   render() {
     const { webformatURL, tags, largeImageURL } = this.props;
     const { isVisible } = this.state;
@@ -37,7 +28,7 @@ export class ImageGalleryItem extends Component {
           <Modal
             image={largeImageURL}
             tags={tags}
-            onClose={this.onCloseModal}
+            onClose={this.onToggleModal}
           />
         )}
       </GalleryItem>

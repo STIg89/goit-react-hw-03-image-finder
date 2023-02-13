@@ -59,13 +59,15 @@ export class ImageFinder extends Component {
   };
 
   render() {
-    const { images, status } = this.state;
+    const { images, status, totalPages } = this.state;
 
     return (
       <Wrapper>
         <SearchBar onSubmitForm={this.onSearchClick} />
         <ImageGallery images={images} />
-        {status === 'resolved' && <Button onClick={this.onLoadMoreClick} />}
+        {status === 'resolved' && totalPages > 1 && (
+          <Button onClick={this.onLoadMoreClick} />
+        )}
         {status === 'pending' && <Loader />}
       </Wrapper>
     );
