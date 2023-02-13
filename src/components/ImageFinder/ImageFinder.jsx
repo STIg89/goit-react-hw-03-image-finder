@@ -15,18 +15,19 @@ export class ImageFinder extends Component {
     status: 'idle',
     error: null,
     totalPages: 0,
+    per_page: 12,
   };
 
   async componentDidUpdate(_, prevState) {
-    const { searchValue, page, totalPages } = this.state;
+    const { searchValue, page, totalPages, per_page } = this.state;
     if (prevState.searchValue !== searchValue || prevState.page !== page) {
       try {
         this.setState({ status: 'pending' });
-        const data = await getImages(searchValue, page);
+        const data = await getImages(searchValue, page, per_page);
         this.setState(({ images }) => ({
           images: [...images, ...data.hits],
           status: 'resolved',
-          totalPages: Math.ceil(data.totalHits / 12),
+          totalPages: Math.ceil(data.totalHits / per_page),
         }));
       } catch (error) {
         Notify.failure('Sorry, try again');
